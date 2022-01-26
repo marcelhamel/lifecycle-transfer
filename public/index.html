@@ -65,20 +65,19 @@
     <div class="h-75 w-50 bg-white flex justify-center items-center relative tc" id="modal-content-container">
       <div id="close-modal" class="absolute top-0 right-1 f1 pointer">&times;</div>
       <div id="error-modal" class="no-display"></div>
-      <div id="intro-modal" class="pr6 pl4">
+      <div id="intro-modal" class="pr5 pl5">
         <h1>Welcome to the new LO Transfer Tool</h1>
         <p>We've made some improvements here which affect the way which this tool functions.<br>
-        <span style="font-weight: bold; color: red;">PLEASE READ THE FOLLOWING UPDATES BEFORE USING</span><br><br>
-        This transfer tool will now:</p>
-        <ul style="text-align: left;">
-          <li>CREATE a new flow in the target account if a similarly named LO flow doesn't already exist there.</li>
-          <li>UPDATE an existing flow in the target account if one exists with the same name. This will overwrite the contents of an existing flow so be careful!</li>
-          <li>For send steps, this tool will now re-map templates in the new account based on template name. For example, if the flow in your source account sent a template called "Template A", the tool will attempt to seek out a template in the target account with the same name and attach it to that step. If no such template exists, then it will need to be re-attached once the flow is imported. You can always move your templates first using our <a href="https://email-transfer-tool.herokuapp.com/">Email Transfer Tool</a>.</li>
-          <li>Look great. The old one was ugly and I'm sorry about that. Really.</li>
+        <span style="font-weight: bold; color: red;">PLEASE READ THE FOLLOWING BEFORE USING</span></p>
+        <p>This transfer tool will now:</p>
+        <ul class="tl">
+          <li class="mb3 mt3">This will now overwrite flows in the target account of the same name. For example, if you are transferring something called "My New LO Flow" to an account, it will overwrite any LO flow in your target account also named "My New LO Flow". This could have some pretty large effects on reporting if you accidentally overwrite active flows in another account so please "look before you leap".</li>
+          <li class="mb3 mt3">All flows you transfer will be automatically set to "inactive" in the target account.</li>
+          <li class="mb3 mt3">For send steps, this tool will now re-map templates in the new account based on template name. For example, if the flow in your source account sent a template called "Template A", the tool will attempt to seek out a template in the target account with the same name and attach it to that step. If no such template exists, then it will need to be re-attached once the flow is imported. You can always move your templates first using our <a href="https://email-transfer-tool.herokuapp.com/">Email Transfer Tool</a>.</li>
+          <li class="mb3 mt3">There have been some aesthetic updates. The old one was ugly and I'm sorry about that. Really.</li>
         </ul>
         <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>Questions? Ask Marcel for help.</p>
+        <p><span style="color: red; font-weight: bold;">One final reminder: DON'T USE THIS TO UPDATE ACTIVE FLOWS IN YOUR PRODUCTION ACCOUNTS.</span><br>Questions? Ask Marcel for help.</p>
       </div>
       <div id="response-modal" class="no-display w-100 pa3 pr5 h-100 overflow-y-scroll tl"></div>
       <div id="loading-modal" class="flex w-100 flex-column justify-around pa5 no-display">
