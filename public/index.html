@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Sailthru LO Transfer Tool</title>
+
+  <!-- jQuery -->
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <!-- Page logic -->
+  <script src="/app.js"></script>
+
+  <!-- CSS links -->
+  <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
+  <link rel="stylesheet" href="https://use.typekit.net/cim5fjc.css" type="text/css" />
+  <link rel="stylesheet" href="/style.css"/>
+
+</head>
+<body class="aspect-ratio--object">
+  <nav class="w-100 flex justify-center items-center white bg-sailthru">
+    SAILTHRU LO TRANSFER TOOL
+  </nav>
+  <main class="flex flex-row">
+
+    <!-- BEGIN Credentials "form" -->
+    <section class="w-25 bg-black-05 h-100 pa3" id="acct-forms">
+
+      <!-- BEGIN Source Account Config -->
+      <div id="source_acct" class="mb4">
+        <h3 class="mv1">SOURCE ACCOUNT</h3>
+        <p class="mb1 mt3">API KEY</p>
+        <input type="text" id="src_key" class="w-100 pa1 input-reset">
+        <p class="mb1 mt3">API SECRET</p>
+        <input type="text" id="src_secret" class="w-100 pa1 input-reset mb3">
+        <button class="bg-sailthru mv1 button-reset pa2" id="src_submit">GET LIST</button>
+      </div>
+      <!-- END Source Account Config -->
+      <!-- BEGIN Target Account Config -->
+      <div id="dest_acct">
+        <h3 class="mv1">TARGET ACCOUNT</h3>
+        <p class="mb1 mt3">API KEY</p>
+        <input type="text" id="dest_key" class="w-100 pa1 input-reset">
+        <p class="mb1 mt3">API SECRET</p>
+        <input type="text" id="dest_secret" class="w-100 pa1 input-reset mb3">
+        <button class="bg-sailthru mv1 button-reset pa2" id="dest_submit">UPLOAD</button>
+      </div>
+      <!-- END Target Account Config -->
+
+    </section>
+    <!-- END Credentials "form" -->
+
+    <section class="w-75 h-100 relative" id="template-list-container">
+      <div class="flex justify-center items-center h-100">
+        <p class="i black-50">Enter the API key and secret for your source account and click "GET LIST" to see a list of Lifecycle Optimizer flows to import.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- BEGIN Modals -->
+  <div class="aspect-ratio--object bg-black-50 flex justify-center items-center" id="modal-container">
+    <div class="h-75 w-50 bg-white flex justify-center items-center relative tc" id="modal-content-container">
+      <div id="close-modal" class="absolute top-0 right-1 f1 pointer">&times;</div>
+      <div id="error-modal" class="no-display"></div>
+      <div id="intro-modal" class="pr6 pl4">
+        <h1>Welcome to the new LO Transfer Tool</h1>
+        <p>We've made some improvements here which affect the way which this tool functions.<br>
+        <span style="font-weight: bold; color: red;">PLEASE READ THE FOLLOWING UPDATES BEFORE USING</span><br><br>
+        This transfer tool will now:</p>
+        <ul style="text-align: left;">
+          <li>CREATE a new flow in the target account if a similarly named LO flow doesn't already exist there.</li>
+          <li>UPDATE an existing flow in the target account if one exists with the same name. This will overwrite the contents of an existing flow so be careful!</li>
+          <li>For send steps, this tool will now re-map templates in the new account based on template name. For example, if the flow in your source account sent a template called "Template A", the tool will attempt to seek out a template in the target account with the same name and attach it to that step. If no such template exists, then it will need to be re-attached once the flow is imported. You can always move your templates first using our <a href="https://email-transfer-tool.herokuapp.com/">Email Transfer Tool</a>.</li>
+          <li>Look great. The old one was ugly and I'm sorry about that. Really.</li>
+        </ul>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>Questions? Ask Marcel for help.</p>
+      </div>
+      <div id="response-modal" class="no-display w-100 pa3 pr5 h-100 overflow-y-scroll tl"></div>
+      <div id="loading-modal" class="flex w-100 flex-column justify-around pa5 no-display">
+        <img src="/sailboat.svg" style="height: 150px;" />
+        <p>Transferring assets to Sailthru...</p>
+      </div>
+    </div>
+  </div>
+  <!-- END Modals -->
+
+</body>
+</html>
