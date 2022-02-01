@@ -183,7 +183,7 @@ function hideModal() {
   $('#error-modal').addClass('no-display').text('');
   $('#response-modal').addClass('no-display').html('');
   $('#modal-container').addClass('no-display');
-  $('intro-modal').addClass('no-display').html('');
+  $('#intro-modal').addClass('no-display').html('');
 }
 
 // Thrilling sailboat "animation".
