@@ -1,6 +1,6 @@
 $('document').ready(function() {
 
-  // Event listener for "Import" button
+  // Event listener for 'Import' button
   $('#src_submit').click(function() {
     var src_key = $('#src_key').val();
     var src_secret = $('#src_secret').val();
@@ -22,7 +22,7 @@ $('document').ready(function() {
   // Close Error Modal
   $('#close-modal').click(hideModal);
 
-  // Event listener for "Submit" button
+  // Event listener for 'Submit' button
   $('#dest_submit').click(function() {
     submitTemplateList();
   })
@@ -33,11 +33,11 @@ function createFlowList(flowObj) {
   console.log(flowObj);
   var templateList = $('<div></div>')
                       .attr({
-                        class: "pa3 overflow-y-scroll",
-                        id: "template-list"
+                        class: 'pa3 overflow-y-scroll',
+                        id: 'template-list'
                       })
                       .css({
-                        "height": "calc(100% - 50px)"
+                        'height': 'calc(100% - 50px)'
                       })
 
   $(Object.keys(flowObj)).each(function(index, key) {
@@ -54,10 +54,10 @@ function createFlowList(flowObj) {
 
     var div = $('<div></div>')
               .attr({
-                class: "w-100 pa2 pv3"
+                class: 'w-100 pa2 pv3'
               })
               .css({
-                "background": index % 2 == 0 ? "#EFF0F1": "#FFFFFF"
+                'background': index % 2 == 0 ? '#EFF0F1': '#FFFFFF'
               })
               .append(label);
 
@@ -69,7 +69,7 @@ function createFlowList(flowObj) {
                         class: 'w-100 flex justify-around'
                       })
                       .css({
-                        "height": "50px",
+                        'height': '50px',
                       })
 
   var selectAllButton = $('<button></button>')
@@ -91,7 +91,7 @@ function createFlowList(flowObj) {
   selectAllDiv = $(selectAllDiv).append(selectAllButton)
                                 .append(deselectAllButton)
 
-  $("#template-list-container").html(templateList)
+  $('#template-list-container').html(templateList)
                                .append(selectAllDiv);
 }
 
@@ -104,7 +104,7 @@ function submitTemplateList() {
       .map(function(x) { return x.name });
 
   if (templatesToSubmit.length == 0) {
-    showErrorModal("Please select templates to transfer!");
+    showErrorModal('Please select templates to transfer!');
     return;
   }
 
@@ -126,16 +126,16 @@ function submitTemplateList() {
       },
       dataType: 'json',
       success: function(res) {
-        console.log("RESPONSE: ", res);
+        console.log('RESPONSE: ', res);
         $(res).each(function(ind, str) {
           console.log(str);
-          var li = $("<li></li>").text(str)
+          var li = $('<li></li>').text(str)
           $('#response-modal').append(li);
         })
         showResponseModal();
       },
       error: function(err) {
-        console.log("ERROR: ", err.responseText);
+        console.log('ERROR: ', err.responseText);
         showErrorModal(parseResponseText(err.responseText));
       }
     })
@@ -143,7 +143,7 @@ function submitTemplateList() {
 
 // Select all templates
 function selectAll() {
-  var allCheckboxes = document.querySelectorAll(".template-checkbox");
+  var allCheckboxes = document.querySelectorAll('.template-checkbox');
   allCheckboxes.forEach(function(el) {
     el.checked = true;
   })
@@ -151,7 +151,7 @@ function selectAll() {
 
 // Deselect all templates
 function deselectAll() {
-  var allCheckboxes = document.querySelectorAll(".template-checkbox");
+  var allCheckboxes = document.querySelectorAll('.template-checkbox');
   allCheckboxes.forEach(function(el) {
     el.checked = false;
   })
@@ -159,9 +159,9 @@ function deselectAll() {
 
 // Handles error messages in varying formats
 function parseResponseText(str) {
-  var startIndex = str.indexOf("<pre>") + 5;
-  var endIndex = str.indexOf("<br>");
-  return str.includes('<html>') ? str.substring(startIndex, endIndex) : "ERROR: " + str;
+  var startIndex = str.indexOf('<pre>') + 5;
+  var endIndex = str.indexOf('<br>');
+  return str.includes('<html>') ? str.substring(startIndex, endIndex) : 'ERROR: ' + str;
 }
 
 // Display error modal
@@ -174,7 +174,7 @@ function showErrorModal(str) {
 // Display response modal after submitting template list for transfer.
 function showResponseModal(str) {
   $('#response-modal').removeClass('no-display');
-  $("#close-modal").removeClass('no-display');
+  $('#close-modal').removeClass('no-display');
   $('#loading-modal').addClass('no-display');
 }
 
@@ -186,9 +186,9 @@ function hideModal() {
   $('#intro-modal').addClass('no-display').html('');
 }
 
-// Thrilling sailboat "animation".
+// Thrilling sailboat 'animation'.
 function showLoadingModal() {
   $('#loading-modal').removeClass('no-display');
   $('#modal-container').removeClass('no-display');
-  $("#close-modal").addClass('no-display');
+  $('#close-modal').addClass('no-display');
 }
